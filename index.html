@@ -5,33 +5,95 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather Dashboard</title>
-    <link rel="stylesheet" href="./assets/css/style.css" />
-
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
       crossorigin="anonymous"
+      referrerpolicy="no-referrer"
     />
+    <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
-
   <body>
-    <div class="text-center">
-      <hi>Weather Dashboard</hi>
-    </div>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"
-      integrity="sha512-u9akINsQsAkG9xjc1cnGF4zw5TFDwkxuc9vUp5dltDWYCSmyd0meygbvgXrlc/z7/o4a19Fb5V0OUE58J7dcyw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
+    <header>
+      <h1>Weather Dashboard</h1>
+    </header>
 
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"
-      integrity="sha512-u9akINsQsAkG9xjc1cnGF4zw5TFDwkxuc9vUp5dltDWYCSmyd0meygbvgXrlc/z7/o4a19Fb5V0OUE58J7dcyw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
+    <main>
+      <section class="search">
+        <div class="container">
+          <form class="search" id="search">
+            <input
+              type="text"
+              class="searchTerm"
+              id="searchTerm"
+              placeholder="Enter your city"
+            />
+            <button title="search" type="submit" class="searchButton">
+              <i class="fa fa-search"></i>
+            </button>
+          </form>
+        </div>
+        <hr />
+      </section>
+
+      <section class="today_forecast hide">
+        <h2><span id="city"></span> (<span id="date"></span>)</h2>
+        <div class="container">
+          <p>Temp: <span id="temp">0</span><span>&#8451;</span></p>
+          <p>Wind: <span id="wind">0</span>MPH</p>
+          <p>Humidity: <span id="humidity">0</span>%</p>
+          <p>UV index: <span id="uv_index">0</span></p>
+        </div>
+      </section>
+
+      <section class="five_day_forecast hide">
+        <h2>5-day Forecast:</h2>
+        <div>
+          <div id="card_1" class="card">
+            <div class="card_container">
+              <p id="date_1"></p>
+              <img id="icon_1" src="#" alt="icon" />
+              <p>Wind: <span id="wind_1"></span>MPH</p>
+              <p>Humidity: <span id="humidity_1"></span>%</p>
+            </div>
+          </div>
+          <div id="card_2" class="card">
+            <div class="card_container">
+              <p id="date_2"></p>
+              <img id="icon_2" src="#" alt="icon" />
+              <p>Wind: <span id="wind_2"></span>MPH</p>
+              <p>Humidity: <span id="humidity_2"></span>%</p>
+            </div>
+          </div>
+          <div id="card_3" class="card">
+            <div class="card_container">
+              <p id="date_3"></p>
+              <img id="icon_3" src="#" alt="icon" />
+              <p>Wind: <span id="wind_3"></span>MPH</p>
+              <p>Humidity: <span id="humidity_3"></span>%</p>
+            </div>
+          </div>
+          <div id="card_4" class="card">
+            <div class="card_container">
+              <p id="date_4"></p>
+              <img id="icon_4" src="#" alt="icon" />
+              <p>Wind: <span id="wind_4"></span>MPH</p>
+              <p>Humidity: <span id="humidity_4"></span>%</p>
+            </div>
+          </div>
+          <div id="card_5" class="card">
+            <div class="card_container">
+              <p id="date_5"></p>
+              <img id="icon_5" src="#" alt="icon" />
+              <p>Wind: <span id="wind_5"></span>MPH</p>
+              <p>Humidity: <span id="humidity_5"></span>%</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
     <script src="./assets/js/script.js"></script>
   </body>
 </html>
