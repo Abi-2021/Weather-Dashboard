@@ -1,3 +1,5 @@
+const API_KEY = 'db20263da31c4760e1532b4024aca3fb';
+
 // Elements
 const searchInputEl = document.querySelector('#searchTerm');
 const searchFormEl = document.querySelector('#search');
@@ -6,7 +8,8 @@ async function getGeoCoordinates(address) {
   const url =
     'http://api.openweathermap.org/geo/1.0/direct?q=' +
     address +
-    '&limit=1&appid=16991ac51522a2ab91d2187ce05413e2';
+    '&limit=1&appid=' +
+    API_KEY;
 
   const response = await axios.get(url);
   const data = response.data;
@@ -27,7 +30,8 @@ async function getWeatherData(geoCoordinates) {
     lat +
     '&' +
     lon +
-    '&exclude={part}&appid=16991ac51522a2ab91d2187ce05413e2';
+    '&exclude={part}&appid=' +
+    API_KEY;
   const response = await axios.get(url);
   const data = response.data;
   return data;
@@ -54,8 +58,10 @@ function display(data, cityName) {
   const humidityEl = document.querySelector('#humidity');
   humidityEl.textContent = data.current.humidity;
 
+  const uvIndexValue = data.current.uvi;
   const uv_indexEl = document.querySelector('#uv_index');
-  uv_indexEl.textContent = data.current.uvi;
+  uv_indexEl.textContent = uvIndexValue;
+  determineUvIndexSeverity(uvIndexValue, uv_indexEl);
 
   const daysCount = 5;
   const dailyData = data.daily;
@@ -80,6 +86,16 @@ function display(data, cityName) {
 
   const fiveDayForecastSectionEl = document.querySelector('.five_day_forecast');
   fiveDayForecastSectionEl.classList.remove('hide');
+}
+
+function determineUvIndexSeverity(uvIndexValue, uv_indexEl) {
+  if (uvIndexValue < 3) {
+    uv_indexEl.classList.add('favourable');
+  } else if (uvIndexValue >= 3 && uvIndexValue < 6) {
+    uv_indexEl.classList.add('moderate');
+  } else {
+    uv_indexEl.classList.add('severe');
+  }
 }
 
 async function searchFormHandler(event) {

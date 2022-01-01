@@ -192,3 +192,22 @@ hr {
     justify-content: space-evenly;
   }
 }
+
+/* UV Index */
+
+.uv_index {
+  font-weight: 700;
+  font-size: x-large;
+}
+
+.favourable {
+  color: green;
+}
+
+.moderate {
+  color: yellow;
+}
+
+.severe {
+  color: red;
+}
