@@ -91,7 +91,7 @@ hr {
 }
 
 /* History City */
-.previous_city_container {
+.search_city_container {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -185,7 +185,7 @@ hr {
     gap: 15px;
   }
 
-  .previous_city_container {
+  .search_city_container {
     display: flex;
     flex-direction: row;
     gap: 20px;
